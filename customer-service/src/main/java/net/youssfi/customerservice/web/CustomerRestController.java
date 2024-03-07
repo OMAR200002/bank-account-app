@@ -20,6 +20,6 @@ public class CustomerRestController {
     }
     @GetMapping("/customers/{id}")
     public Customer customerById(@PathVariable Long id){
-        return customerRepository.findById(id).get();
+        return customerRepository.findById(id).orElseThrow(() -> new RuntimeException("Customer not found"));
     }
 }

@@ -24,7 +24,7 @@ public class AccountRestController {
     }
     @GetMapping("/accounts/{id}")
     public BankAccount bankAccountById(@PathVariable String id){
-        BankAccount bankAccount= accountRepository.findById(id).get();
+        BankAccount bankAccount= accountRepository.findById(id).orElseThrow(() -> new RuntimeException("Account not found"));
         Customer customer=customerRestClient.findCustomerById(bankAccount.getCustomerId());
         bankAccount.setCustomer(customer);
         return bankAccount;
