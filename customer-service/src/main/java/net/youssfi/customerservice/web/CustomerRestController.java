@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 public class CustomerRestController {
-    private CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
     public CustomerRestController(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
